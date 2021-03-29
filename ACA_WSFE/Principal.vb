@@ -2448,8 +2448,6 @@ Public Class Principal
         ByVal adicionalesstr As String,
         ByVal cbtesasocstr As String) As String
 
-        MsgBox("Entro al proceso ObtineCAEPIMSAL")
-
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
         Dim cbte_estado As String
@@ -2457,15 +2455,6 @@ Public Class Principal
         Dim cbte_cae As String
         Dim desc_rechazo As String
         Dim reproceso As String
-
-        'esto es provisiorio solo para probar y despues lo saco
-        '
-        'Dim cadena2 As String = ""
-        'Dim ver2 As Integer = 1
-        'Dim tipcodaut3 As String = "E"
-        'Dim cbte_cae3 As String = "70417054367476"
-        'cadena2 = ArmarCadena(ver2, fecha_cbte, cuit, punto_vta, tipo_cbte, cbt_desde, imp_total, moneda, tipo_cbio, tipo_doc, nro_doc, tipcodaut3, cbte_cae3)
-        '
 
         gGrabaLog("C O M I E N Z O ObtCAEIMPSAL")
         gGrabaLog("Data")
@@ -2496,15 +2485,9 @@ Public Class Principal
         gGrabaLog("Fin Data")
         gGrabaLog("ObtieneCAEIMPSAL")
 
-
-
-
-        MsgBox("paso los gGrabaLog del metodo ObtCAEIMPSAL")
-
         Dim objWSFE As New wsfev1t.Service
         Dim objFEAuthRequest As New wsfev1t.FEAuthRequest
 
-        'MsgBox("paso la definicióndel web services wsfev1t.Service, wsfev1t.FEAuthRequest")
         Dim cantidadreg As Integer = 1
         Dim indicemax As Integer = 0
         Dim d As Integer = 0
@@ -2532,7 +2515,6 @@ Public Class Principal
         Dim CbtesAsocTipo(1), CbtesAsocPtoVta(1), CbtesAsocNro(1), CbtesAsocCuit(1), CbtesAsocCbteFch(1) As String
         Dim TempValue As String
 
-        'MsgBox("Paso las definciones de tribxml, tributos, tiptrib... y de los FECAE")
         tipotrib = 0
         tipoiva = 0
         objFEAuthRequest.Cuit = cuit
@@ -2551,10 +2533,6 @@ Public Class Principal
         Dim testxmlopcional As XmlTextReader = New XmlTextReader(readeropcioanl)
         Dim readercbtesasoc As StringReader = New StringReader(cbtesasocstr)
         Dim testxmlcbtesasoc As XmlTextReader = New XmlTextReader(readercbtesasoc)
-
-        MsgBox("ObtCAEImpSAL")
-
-        MsgBox(strToken)
 
         tribxml = ""
         'Obtengo los datos del DataGridView DGV_FEDetalleRequest
@@ -2626,7 +2604,7 @@ Public Class Principal
                                 End If
                         End Select
                     Loop
-                    MsgBox(" XML Cbtes " + cbtesasocxml + " T " + t.ToString)
+                    'MsgBox(" XML Cbtes " + cbtesasocxml + " T " + t.ToString)
                     'gGrabaLog("1- " & desc_rechazo)
 
                     For tt = 1 To t - 1
@@ -2641,7 +2619,7 @@ Public Class Principal
                             .CbteFch = CbtesAsocCbteFch(tt)
                         End With
 
-                        MsgBox("Tipo " + CbteAsoc.Tipo.ToString + " Pto Vta " + CbteAsoc.PtoVta.ToString + " Nro " + CbteAsoc.Nro.ToString + "")
+                        'MsgBox("Tipo " + CbteAsoc.Tipo.ToString + " Pto Vta " + CbteAsoc.PtoVta.ToString + " Nro " + CbteAsoc.Nro.ToString + "")
 
                         If tt > 1 Then
                             ReDim Preserve ArrayOfCbtesASoc(tt - 1)
@@ -2698,7 +2676,7 @@ Public Class Principal
                                 End If
                         End Select
                     Loop
-                    MsgBox("tribxml: " + tribxml)
+                    'MsgBox("tribxml: " + tribxml)
                     For tt = 1 To t - 1
                         Dim TributoTax As New wsfev1t.Tributo
 
@@ -2763,7 +2741,7 @@ Public Class Principal
                                 End If
                         End Select
                     Loop
-                    MsgBox("tribxml: " + tribxml)
+                    'MsgBox("tribxml: " + tribxml)
                     gGrabaLog("1- " & desc_rechazo)
                     For tt = 1 To t - 1
                         Dim AlicIva As New wsfev1t.AlicIva
@@ -2812,7 +2790,7 @@ Public Class Principal
                                 End If
                         End Select
                     Loop
-                    MsgBox("Este es el tribxml" + tribxml)
+                    'MsgBox("Este es el tribxml" + tribxml)
                     'gGrabaLog("1- " & desc_rechazo)
                     For tt = 1 To t - 1
                         Dim Opcional As New wsfev1t.Opcional
@@ -2829,64 +2807,6 @@ Public Class Principal
                     objFEDetalleRequest.Opcionales = ArrayOfAdicionales
                 End If
 
-
-                'If adicionalesstr <> "" Then
-                'Do While (testxmlopcional.Read())
-                'If t > 1 Then ReDim OpcionalID(t), OpcionalValor(t)
-
-                'Select Case testxmlopcional.NodeType
-                'Case XmlNodeType.Element 'Mostrar comienzo del elemento.
-                'opcionalxml = opcionalxml & "<" & testxmlopcional.Name & ">"
-                'Select Case testxmlopcional.Name
-                'Case "Id"
-                'opcionalesid = 1
-                'Case "Valor"
-                'opcionalesid = 2
-                'End Select
-                'Case XmlNodeType.Text 'Mostrar el texto en cada elemento.
-                'opcionalxml = opcionalxml & testxmlopcional.Value
-                'Select Case opcionalesid
-                'Case 1
-                'TempValue = testxmlopcional.Value
-                'OpcionalID(t - 1) = Val(TempValue)
-                'Case 2
-                'TempValue = testxmlopcional.Value
-                'OpcionalValor(t - 1) = TempValue
-                'End Select
-                '
-
-                'Case XmlNodeType.EndElement
-                'opcionalxml = opcionalxml & "</" & testxmlopcional.Name & ">"
-                'MsgBox(" T " + (t - 1).ToString + "Opcional Id " + OpcionalID(t - 1) + " Opcional VAlor " + OpcionalValor(t - 1))
-                'If testxmlopcional.Name = "Opcional" Then
-                't = t + 1
-                'End If
-                'End Select
-
-
-                'Loop
-                'MsgBox(" XML OPcional " + opcionalxml)
-                'MsgBox(" XML OPcional Loop " + (t - 1).ToString)
-
-                'gGrabaLog("1- " & desc_rechazo)
-                'For tt = 1 To t - 1
-                'Dim Opcional As New wsfev1t.Opcional
-                'With Opcional
-                '.Id = OpcionalID(tt - 1)
-                '.Valor = OpcionalValor(tt - 1)
-                'End With
-                '   If tt > 1 Then
-                '  ReDim Preserve ArrayOfAdicionales(tt - 1)
-                ' End If
-                'MsgBox("ID " + Opcional.Id + " Valor " + Opcional.Valor)
-                '
-                'ArrayOfAdicionales(tt - 1) = Opcional
-                'MsgBox("ID " + (tt - 1).ToString + "Array ID " + ArrayOfAdicionales(tt - 1).Id + " Valor " + ArrayOfAdicionales(tt - 1).Valor)
-                'Next tt
-                'gGrabaLog("2- " & desc_rechazo)
-                '       objFEDetalleRequest.Opcionales = ArrayOfAdicionales
-                '      End If
-                'MsgBox(" Objeto Cbte " + objFEDetalleRequest.Opcionales.ToString)
                 'MSAL
                 If presta_serv > "1" Then
                     .FchServDesde = fecha_serv_desde
@@ -2900,36 +2820,21 @@ Public Class Principal
             ArrayOfFEDetalleRequest(d) = objFEDetalleRequest
         Next d
         objFERequest.FeDetReq = ArrayOfFEDetalleRequest
-        gGrabaLog("21- " & strToken)
-        gGrabaLog("21- " & strSign)
+        gGrabaLog("21 Tok- " & strToken)
+        gGrabaLog("21 Sig- " & strSign)
 
         ' Invoco al método FEAutRequest
         Try
-            'Codigo Comentado que Sirve para levantar el Array de Parametros de Opcionales. utilidad Testing
-            'MsgBox("Antes de llamar al parametro")
-            'objFEResponseOPC = objWSFE.FEParamGetTiposOpcional(objFEAuthRequest)
-            'MsgBox("despues")
-
-            'If Not objFEResponseOPC.Errors Is Nothing Then
-            'MsgBox(" REsult 1 " + objFEResponseOPC.Errors(0).Msg)
-            'Else
-            'ii = objFEResponseOPC.ResultGet.Length
-            'MsgBox("Despues del Rank " + ii.ToString)
-            'For d = 0 To (ii - 1)
-            'MsgBox(" REsult  " + d.ToString + " " + objFEResponseOPC.ResultGet(d).Id + " " + objFEResponseOPC.ResultGet(d).Desc)
-            'Next
-            'End If
-
             objFEResponse = objWSFE.FECAESolicitar(objFEAuthRequest, objFERequest)
-            MsgBox("llamo al método  objWSFE.FECAESolicitar" + objFEAuthRequest.ToString, objFERequest.ToString)
+            'MsgBox("llamo al método  objWSFE.FECAESolicitar" + objFEAuthRequest.ToString(), objFERequest.ToString)
             objFEDetalleResponse = objFEResponse.FeDetResp
             If Not objFEResponse.Errors Is Nothing Then
-                MsgBox("Entro el if Not de objFEResponse.Errors is Nothing")
+                'MsgBox("Entro el if Not de objFEResponse.Errors is Nothing")
                 desc_rechazo = objFEResponse.Errors(0).Msg
                 ObtieneCAEPIMSAL = "False|" + desc_rechazo + "|||||||"
-
+                gGrabaLog("False|" + desc_rechazo + "|||||||")
             Else
-                MsgBox("entro al else de objFEResponse.Errors")
+                'MsgBox("entro al else de objFEResponse.Errors")
                 ii = objFEResponse.FeCabResp.CantReg
                 reproceso = objFEResponse.FeCabResp.Reproceso
                 For d = 0 To (ii - 1)
@@ -2938,30 +2843,21 @@ Public Class Principal
                     vencimiento_cae = IIf(objFEResponse.FeDetResp(d).CAEFchVto = "NULL", "", objFEResponse.FeDetResp(d).CAEFchVto)
                     cbte_cae = IIf(objFEResponse.FeDetResp(d).CAE = "NULL", "", objFEResponse.FeDetResp(d).CAE)
 
-                    'MsgBox("objFEResponse.FeDetResp: " + cbte_estado, vencimiento_cae, cbte_cae)
+                    gGrabaLog("CBTE CAE " + cbte_cae)
 
                     'defino parametros del DLL y la inicializo a todas
                     Dim cadena As String = "" 'cadena a codificar en formato json
-                    Dim libreria As Integer ' libreria a ejecutar para construir el qr. Puese ser 1 0 3
-                    Dim sertip As String = "" 'tipo de servidor. Aqui vale test o sea de prueba.
-
-                    'Concectar con la base de datos
-                    'Dim con As New ConexionDB()
-
+                    Dim libreria As Integer = 1 ' libreria a ejecutar para construir el qr. Puese ser 1 0 3
+                    Dim sertip As String = "rutatestqr" 'tipo de servidor. Aqui vale test o sea de prueba.
                     'creo ver y tipcodaut y le pongo valores
                     Dim ver As String = "1"
                     Dim tipcodaut As String = "E"
+
                     'llamar a la funcion armar la cadena
                     cadena = ArmarCadena(ver, fecha_cbte, cuit, punto_vta, tipo_cbte, cbt_desde, imp_total, moneda, tipo_cbio, tipo_doc, nro_doc, tipcodaut, cbte_cae)
                     'MsgBox("cadena: " + cadena)
-                    gGrabaLog("CADENA   " & cadena)
+                    gGrabaLog("CADENA: " & cadena)
 
-                    'Defino el servidor como de prueba
-                    sertip = "rutatestqr"
-                    'Usar la libreriía 1 para calcular el QR. También se puede usar el 3.
-                    libreria = 1
-                    'defino instancia de la libreria dll y llamo al constructor
-                    'Dim gqr As New Generarqr(cadena, libreria)
                     Dim gqr As New Generarqr(cadena, libreria, sertip)
 
                     If objFEResponse.FeCabResp.Reproceso = "S" Then
@@ -2983,11 +2879,11 @@ Public Class Principal
                     ObtieneCAEPIMSAL = "True|" + desc_rechazo + "|" + reproceso + "|" + cbte_estado + "|" + vencimiento_cae + "|" + cbte_cae + "|" + cbt_desde + "|" + cbt_hasta + "|"
 
                     If cbte_estado = "R" Then
-                        MsgBox("VS cbte_cae " + cbte_cae + "VS vencimiento_cae " + vencimiento_cae + "VS cbte_estado " + cbte_estado)
+                        'MsgBox("VS cbte_cae " + cbte_cae + "VS vencimiento_cae " + vencimiento_cae + "VS cbte_estado " + cbte_estado)
                         MsgBox("WS Rechazo " + desc_rechazo)
                     End If
                     MsgBox("VS cbte_cae " + cbte_cae + "VS vencimiento_cae " + vencimiento_cae + "VS cbte_estado " + cbte_estado)
-                    MsgBox("VS Desc rechazo " + desc_rechazo)
+                    'MsgBox("VS Desc rechazo " + desc_rechazo)
 
                 Next d
             End If
@@ -3054,8 +2950,6 @@ Public Class Principal
         ByVal adicionalesstr As String,
         ByVal cbtesasocstr As String) As String
 
-        MsgBox("Entro al metodo ObtieneCAEPIPRODMSAL")
-
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
         Dim cbte_estado As String
@@ -3091,8 +2985,6 @@ Public Class Principal
         gGrabaLog(adicionalesstr)
         gGrabaLog("ObtieneCAEPIPRODMSAL")
 
-        MsgBox("Paso los gGrabaLog de ObtieneCAEPIPRODMSAL")
-
         Dim objWSFE As New wsfev1p.Service
         Dim objFEAuthRequest As New wsfev1p.FEAuthRequest
         Dim cantidadreg As Integer = 1
@@ -3121,8 +3013,6 @@ Public Class Principal
         Dim CbtesAsocTipo(1), CbtesAsocPtoVta(1), CbtesAsocNro(1), CbtesAsocCuit(1), CbtesAsocCbteFch(1) As String
         Dim TempValue As String
 
-        MsgBox("paso las definiciones de tribxml, tipotrib,....., y de FECAD")
-
         tipotrib = 0
         tipoiva = 0
         objFEAuthRequest.Cuit = cuit
@@ -3141,11 +3031,6 @@ Public Class Principal
         Dim testxmlopcional As XmlTextReader = New XmlTextReader(readeropcioanl)
         Dim readercbtesasoc As StringReader = New StringReader(cbtesasocstr)
         Dim testxmlcbtesasoc As XmlTextReader = New XmlTextReader(readercbtesasoc)
-
-
-
-
-        MsgBox("Token " + strToken)
 
         tribxml = ""
         'Obtengo los datos del DataGridView DGV_FEDetalleRequest
@@ -3210,7 +3095,7 @@ Public Class Principal
                                 End If
                         End Select
                     Loop
-                    MsgBox(" XML Nuevo " + cbtesasocxml)
+                    'MsgBox(" XML Nuevo " + cbtesasocxml)
                     'gGrabaLog("1- " & desc_rechazo)
 
                     For tt = 1 To t - 1
@@ -3235,7 +3120,7 @@ Public Class Principal
                     objFEDetalleRequest.CbtesAsoc = ArrayOfCbtesASoc
                 End If
 
-                MsgBox(" Objeto Cbte " + objFEDetalleRequest.CbtesAsoc.ToString)
+                'MsgBox(" Objeto Cbte " + objFEDetalleRequest.CbtesAsoc.ToString)
                 t = 1
                 tribxml = ""
                 If tributos <> "" Then
@@ -3448,8 +3333,8 @@ Public Class Principal
 
                     'defino parametros y retorno de la libreria dll y la inicializo a todas
                     Dim cadena As String = ""
-                    Dim libreria As Integer
-                    Dim sertip As String = ""
+                    Dim libreria As Integer = 1 'usar el libreria 1 para calcular el QR. Tambien se puede usar la 3
+                    Dim sertip As String = "rutaprodqr" 'Definir el tipo de servidor. En este caso servidor de test con valor rutatestdqr
 
                     'Concectar con la base de datos
                     'Dim con As New ConexionDB()
@@ -3459,15 +3344,6 @@ Public Class Principal
                     Dim tipcodaut As String = "E"
                     'llamar a la funcion armar la cadena
                     cadena = ArmarCadena(ver, fecha_cbte, cuit, punto_vta, tipo_cbte, cbt_desde, imp_total, moneda, tipo_cbio, tipo_doc, nro_doc, tipcodaut, cbte_cae)
-                    'MsgBox("cadena: " + cadena)
-                    'armar el path con una ruta fija
-                    'path = "C:"
-                    'Definir el tipo de servidor. En este caso servidor de test con valor rutatestdqr
-                    sertip = "rutaprodqr"
-                    'usar el libreria 1 para calcular el QR. Tambien se puede usar la 3
-                    libreria = 1
-                    'defino instancia de la libreria dll y llamo al constructor
-                    'Dim gqr As New Generarqr(cadena, libreria)
                     Dim gqr As New Generarqr(cadena, libreria, sertip)
 
                     If objFEResponse.FeCabResp.Reproceso = "S" Then

@@ -65,3 +65,17 @@ C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DL
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.dll
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.pdb
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.csprojAssemblyReference.cache
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\AFIP-GenerarQR.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\AFIP-GenerarQR.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\Comun.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\MessagingToolkit.QRCode.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\System.Drawing.Common.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\Comun.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\Gma.QrCodeNet.Encoding.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\bin\Debug\Gma.QrCodeNet.Encoding.xml
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.csprojAssemblyReference.cache
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.csproj.CoreCompileInputs.cache
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.csproj.CopyComplete
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\AFIP-GenerarQR\obj\Debug\AFIP-GenerarQR.pdb
