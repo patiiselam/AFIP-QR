@@ -48,3 +48,11 @@ C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DL
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\Comun\obj\Debug\Comun.csproj.CopyComplete
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\Comun\obj\Debug\Comun.dll
 C:\Users\Obdu\Desktop\AFIP\copia de seguridad 3 - lo correcto del poryecto qr\DLL Visual Studio 2017 Factura electronica A y B(FCE)\Comun\obj\Debug\Comun.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\bin\Debug\ParametrosCfdi.xml
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\bin\Debug\Comun.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\bin\Debug\Comun.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\obj\Debug\Comun.csproj.CoreCompileInputs.cache
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\obj\Debug\Comun.csproj.CopyComplete
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\obj\Debug\Comun.dll
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\obj\Debug\Comun.pdb
+C:\Users\Tiiselam\Documents\GitHub\AFIP-QR\Comun\obj\Debug\Comun.csprojAssemblyReference.cache

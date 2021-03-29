@@ -40,16 +40,12 @@ namespace AFIP_GenerarQR
                 //MessageBox.Show(rutapar); //parámetros y ruta de conexión   
 
                 //Definos un objeto de parametros xml y cargo el archvio xml                
-                //var CurrentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                //MessageBox.Show(CurrentDirectory.ToString());
                 XmlDocument listaParametros = new XmlDocument();
                 listaParametros.Load(new XmlTextReader("ParametrosQR.xml"));                
-                //MessageBox.Show("Encontro y cargo el archivo de parámetros xml");
                 //Empiezo a leer el archivo de parámetros xml
                 XmlNodeList listaElementos = listaParametros.DocumentElement.ChildNodes;
                 foreach (XmlNode n in listaElementos)
                {
-                    
                     //MessageBox.Show("Inner "+ n.InnerXml + " Name " + n.Name);
                     if (n.Name.Equals(sertip))
                     {
@@ -59,18 +55,6 @@ namespace AFIP_GenerarQR
                     } 
                     
                 }
-
-                //ConexionDB con = new ConexionDB();                
-                //Concectar con la base de datos
-                //Incializacion mediante el constructor
-                //SqlConnection conexion = new SqlConnection(con.Elemento.ConnStr);
-                //MessageBox.Show(con.Elemento.ConnStr);
-                //abrir conexion
-                //conexion.Open();
-                //MessageBox.Show("Conexión exitosa");
-                //defino variable de comando y lo asocio a la conexion
-                //SqlCommand cdo = new SqlCommand();                
-                //cdo.Connection = conexion;
 
                 //crear un arreglo de la cadena
                 nomarchivo = cadena;
@@ -88,16 +72,7 @@ namespace AFIP_GenerarQR
                 //2 Solución para tomar los caracteres numéricos de la subcadena
                 nomarchivo = nomarchivo.Replace("\"codAut\":", "").Replace("}","");
                 //MessageBox.Show(nomarchivo);                
-                //busco el path en la base de datos
-                //cadcon = "select ia.INET7 from SY01200 ia inner join DYNAMICS.SY01500 ci";
-                //cadcon += " on ia.Master_Type = 'CMP'and ci.INTERID = DB_NAME()";
-                //cadcon += " and ia.Master_ID = ci.INTERID";
-                //MessageBox.Show("cadena sql " + cadcon);
-                //obenter comando de selecion
-                //cdo.CommandText = cadcon;
-                //ejecutar comando
-                //SqlDataReader dr = cdo.ExecuteReader();
-                //path = dr[0].ToString();
+          
                 //Genero el código QR segun la librería MessagingToolkit.QRCode
                 if (libreria == 1)
                 {
@@ -116,7 +91,7 @@ namespace AFIP_GenerarQR
                     bmp.Save(@path + nomarchivo + ".png", ImageFormat.Png);
                     //MessageBox.Show(@path + nomarchivo + ".png");
                     //bmp.Save(nomarchivo + ".png", ImageFormat.Png);
-                    MessageBox.Show("Se genero el código QR: " + nomarchivo + ".png");
+                    //MessageBox.Show("Se genero el código QR: " + nomarchivo + ".png");
                 }
                 //genero el código QR según la librería ThoughtWorks.QRCode
                 else if (libreria == 2)
@@ -149,9 +124,9 @@ namespace AFIP_GenerarQR
                     renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
                     var imagentemporal = new Bitmap(ms);
                     var bmp = new Bitmap(imagentemporal, new Size(new Point(200, 200)));
-                    //bmp.Save(@path + "\\" + nomarchivo + ".png", ImageFormat.Png);
-                    bmp.Save(nomarchivo + ".png", ImageFormat.Png);
-                    MessageBox.Show("Se genero el código QR: " + nomarchivo + ".png");
+                    bmp.Save(@path + "\\" + nomarchivo + ".png", ImageFormat.Png);
+                    //bmp.Save(nomarchivo + ".png", ImageFormat.Png);
+                    //MessageBox.Show("Se genero el código QR: " + nomarchivo + ".png");
                 }
                 //Cerrar conexión
                 //conexion.Close();
